@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class category extends Model
 {
     use HasFactory;
 }
 
-public function category()
+public function posts()
 {
-    return $this->belongsTo(Catefory::class);
+    return $this->belongsTo(Post::class);
 }
