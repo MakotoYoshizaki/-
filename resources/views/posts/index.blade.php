@@ -10,6 +10,7 @@
 
        
     </head>
+    <x-app-layout>
     <body class="antialiased">
         <h1>Blog Name</h1>
         <a href='/posts/create'>create</a>
@@ -39,5 +40,7 @@
                 }
             }
         </script>
+        {{ Auth::user()->name }}
     </body>
+    </x-app-layout>
 </html>
