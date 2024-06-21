@@ -1,0 +1,58 @@
+/* styles.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #2c3e50;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.tab {
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #34495e;
+    text-align: center;
+}
+
+.tab:hover {
+    background-color: #34495e;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.content-item {
+    display: none;
+}
+
+.content-item.active {
+    display: block;
+}
+JavaScript
+最後に、JavaScriptでタブをクリックしたときに対応するコンテンツを表示する機能を追加します。
+
+javascript
+コードをコピーする
+// script.js
+function showContent(tabId) {
+    // すべてのコンテンツを非表示にする
+    var contents = document.getElementsByClassName('content-item');
+    for (var i = 0; i < contents.length; i++) {
+        contents[i].classList.remove('active');
+    }
+    
+    // クリックされたタブのコンテンツを表示する
+    document.getElementById(tabId).classList.add('active');
+}
