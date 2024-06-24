@@ -11,7 +11,11 @@ class PostController extends Controller
 {
     public function index(Post $post)
     {
-        return view('posts/index')->with(['posts'=> $post->getPaginateByLimit(5)]);
+        $posts = $post->getPaginateByLimit(5);
+        // $categories = Category::all // カテゴリーの一覧を取得
+        $categories = Category::with('posts')->get(); // カテゴリーとその投稿を取得
+       
+        return view('posts.index', compact('posts', 'categories'));
     }
     
      public function show(Post $post)

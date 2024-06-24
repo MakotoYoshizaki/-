@@ -30,67 +30,67 @@ class CategorySeeder extends Seeder
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'groove',
+                'name' => 'グルーヴ',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'onatsu',
+                'name' => '音圧',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'onsyoku',
+                'name' => '音色',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'onka',
+                'name' => '音価',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'tempokan',
+                'name' => 'テンポ感',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'mental',
+                'name' => 'メンタル',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'management',
+                'name' => 'マネジメント',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'form',
+                'name' => 'フォーム',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'chops',
+                'name' => 'チョップス',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'listining',
+                'name' => 'リスニング',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'url',
+                'name' => 'URL',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'datsuryoku',
+                'name' => '脱力',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
          DB::table('categories')->insert([
-                'name' => 'chiebukuro',
+                'name' => '知恵袋',
                 'created_at' => new DateTime(),
                 'updated_at' => new DateTime(),
          ]);
