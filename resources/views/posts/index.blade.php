@@ -3,9 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>タブ付きレイアウト</title>
+        <title>Weme</title>
         <link rel="stylesheet" href="css/styles.css">
-        <title>Blog</title>
+        <title>コツを教えて！</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -17,31 +17,35 @@
     <body>
     <div class="container">
         <div class="sidebar">
-            <div class="tab" onclick="showContent('timeline')">タイムライン</div>
-            <div class="tab" onclick="showContent('visual')">visual</div>
-            <div class="tab" onclick="showContent('mm')">MM</div>
-            <div class="tab" onclick="showContent('groove')">groove</div>
-            <div class="tab" onclick="showContent('onatsu')">音圧</div>
-            <div class="tab" onclick="showContent('onsyoku')">音色</div>
-            <div class="tab" onclick="showContent('onka')">音価</div>
-            <div class="tab" onclick="showContent('tempokan')">テンポ感</div>
-            <div class="tab" onclick="showContent('mental')">メンタル</div>
-            <div class="tab" onclick="showContent('management')">マネジメント</div>
-            <div class="tab" onclick="showContent('form')">フォーム</div>
-            <div class="tab" onclick="showContent('chops')">チョップス</div>
-            <div class="tab" onclick="showContent('listining')">リスニング</div>
-            <div class="tab" onclick="showContent('url')">URL</div>
-            <div class="tab" onclick="showContent('daturyoku')">脱力</div>
-            <div class="tab" onclick="showContent('chiebukuro')">知恵袋</div>
+            <div class="tab" onclick="showAllcontent()">タイムライン</div>
+            <div class="tab" onclick="showTagcontent('2')">visual</div>
+            <div class="tab" onclick="showTagcontent('3')">MM</div>
+            <div class="tab" onclick="showTagcontent('4')">groove</div>
+            <div class="tab" onclick="showTagcontent('5')">音圧</div>
+            <div class="tab" onclick="showTagcontent('6')">音色</div>
+            <div class="tab" onclick="showTagcontent('7')">音価</div>
+            <div class="tab" onclick="showTagcontent('8')">テンポ感</div>
+            <div class="tab" onclick="showTagcontent('9')">メンタル</div>
+            <div class="tab" onclick="showTagcontent('10')">マネジメント</div>
+            <div class="tab" onclick="showTagcontent('11')">フォーム</div>
+            <div class="tab" onclick="showTagcontent('12')">チョップス</div>
+            <div class="tab" onclick="showTagcontent('13')">リスニング</div>
+            <div class="tab" onclick="showTagcontent('14')">URL</div>
+            <div class="tab" onclick="showTagcontent('15')">脱力</div>
+            <div class="tab" onclick="showTagcontent('16')">知恵袋</div>
         </div>
+        
+       
+
         <div class="content">
             <div id="timeline" class="content-item active">
                 <h1>タイムライン</h1>
               <h1>コツを教えて！</h1>
              <a href='/posts/create'>コツを教える</a>
-             <div class='posts'>
+             <div class='posts' id="content">
                     @foreach($posts as $post)
-                    <div class='post'>
+                    <div class='post' id="{{ $post->category->id }}">
+                   
                         <h2 class='title'>
                             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h2>
@@ -58,6 +62,8 @@
                 <div class='paginate'>{{ $posts->links() }}</div>
                </div>
              </div>
+             
+             
             <div id="visual" class="content-item">
                 <h1></h1>
                 <p>ここにプロフィールの内容が表示されます。</p>
@@ -69,9 +75,9 @@
             </div>
         </div>
     </div>
-    <script src="js/home.script.js"></script>
-</body>
-    <body class="antialiased">
+    <script src="{{asset('js/home.script.js')}}"></script>
+
+    <div class="antialiased">
         <script>
             function deletePost(id){
                 'use strict'
@@ -81,6 +87,7 @@
                 }
             }
         </script>
+        </div>
     </body>
     </x-app-layout>
 </html>
