@@ -51,5 +51,14 @@ class PostController extends Controller
          $post->delete();
          return redirect('/');
      }
+      public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $posts = Post::where('title', 'LIKE', "%{$query}%")
+            ->orWhere('body', 'LIKE', "%{$query}%")
+            ->paginate(10);
+
+        return view('posts.index', compact('posts'));
+    }
 
 }
