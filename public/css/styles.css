@@ -1,4 +1,30 @@
 /* styles.css */
+header {
+    background-color:rgba(248, 248, 248, 0.5);
+    padding: 0; /* ヘッダーの内側余白 */
+    display: flex;
+    align-items: flex-start;
+}
+
+.logo-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 0; /* ロゴコンテナにパディングを適用 */
+}
+
+.logo {
+    height: 100px; /* ロゴの高さを調整 */
+    width: auto;  /* ロゴの幅を自動調整 */
+}
+
+
+hr {
+    border: none; /* デフォルトの境界線を削除 */
+    height: 40px; /* 水平線の高さ */
+    background-color: #00008B; /* 水平線の色 */
+    margin: 20px 0; /* 水平線の上下のマージン */
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -40,19 +66,94 @@ body {
 .content-item.active {
     display: block;
 }
-JavaScript
-最後に、JavaScriptでタブをクリックしたときに対応するコンテンツを表示する機能を追加します。
 
-javascript
-コードをコピーする
-// script.js
-function showContent(tabId) {
-    // すべてのコンテンツを非表示にする
-    var contents = document.getElementsByClassName('content-item');
-    for (var i = 0; i < contents.length; i++) {
-        contents[i].classList.remove('active');
-    }
-    
-    // クリックされたタブのコンテンツを表示する
-    document.getElementById(tabId).classList.add('active');
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
+
+.post {
+    background-color: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 12px; /* 角を丸くする */
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 影をつける */
+    margin-bottom: 15px; /* 各投稿の間にスペースを作る */
+     position: relative; /* 絶対配置の基準にする */
+}
+
+.post .title a {
+    color: #1da1f2;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.post a {
+    color: #657786;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.post .body {
+    margin: 10px 0;
+    color: #14171a;
+}
+
+.submit-button {
+    background-color: #008080;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 18px;
+    cursor: pointer;
+    position: absolute; /* 絶対配置にする */
+    bottom: 10px; /* 下から10ピクセルの位置 */
+    right: 10px; /* 右から10ピクセルの位置 */
+}
+
+.search-container {
+    display: flex;
+    justify-content: center; /* 水平方向に中央揃え */
+    align-items: flex-start; /* 垂直方向に上寄せ */
+    height: 100px; /* 検索窓の高さを設定 */
+    margin-left: 200px;
+    margin-top: 15px; /* 画面上部からのマージン */
+}
+
+.search-input {
+    padding: 0px;
+    font-size: 16px;
+    border-radius: 18px;
+    border: 1px solid #ccc;
+    text-align: le; /* 入力テキストを中央に配置 */
+    margin-right: 10px; /* ボタンとの間にスペースを追加 */
+    margin-top: 15px;
+}
+.search-button {
+    background-color: #0000ff; /* 別の色を設定 */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 18px;
+    cursor: pointer;
+    margin-top: 19px; /* 上にマージンを追加 */
+}
+
+
+/*JavaScript*/
+/*最後に、JavaScriptでタブをクリックしたときに対応するコンテンツを表示する機能を追加します。*/
+
+/*javascript*/
+/*コードをコピーする*/
+/*// script.js*/
+/*function showContent(tabId) {*/
+/*    // すべてのコンテンツを非表示にする*/
+/*    var contents = document.getElementsByClassName('content-item');*/
+/*    for (var i = 0; i < contents.length; i++) {*/
+/*        contents[i].classList.remove('active');*/
+/*    }*/
+    
+/*    // クリックされたタブのコンテンツを表示する*/
+/*    document.getElementById(tabId).classList.add('active');*/
+/*}*/

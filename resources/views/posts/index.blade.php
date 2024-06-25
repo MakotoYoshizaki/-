@@ -15,6 +15,18 @@
     </head>
     <x-app-layout>
     <body>
+        <header>
+            <div class="logo-container">
+                <img src="/img/Weme_logo.jpg"  class="logo">
+            </div>
+            <form action="{{ route('posts.search') }}" method="GET">
+                <div class="search-container">
+                    <input type="text" name="query" class="search-input" placeholder="&#x1F4A1;コツを探す&#x1F4A1;" value="{{ request()->input('query') }}">
+                    <button type="submit" class="search-button" >検索！</button>
+                </div>
+            </form>
+        </header>  
+   　 <hr>
     <div class="container">
         <div class="sidebar">
             <div class="tab" onclick="showAllcontent()">タイムライン</div>
@@ -38,6 +50,9 @@
        
 
         <div class="content">
+            
+            
+            
             <div id="timeline" class="content-item active">
                 <h1>タイムライン</h1>
               <h1>コツを教えて！</h1>
@@ -54,7 +69,7 @@
                         <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button type="button" onclick="deletePost({{ $post->id }})">delete</button>
+                            <button type="button" class="submit-button" onclick="deletePost({{ $post->id }})"> &#x1F5D1; </button>
                         </form>
                     </div>
                     @endforeach
