@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -13,9 +14,8 @@ class PostController extends Controller
     {
         $posts = $post->getPaginateByLimit(5);
         // $categories = Category::all // カテゴリーの一覧を取得
-        $categories = Category::with('posts')->get(); // カテゴリーとその投稿を取得
-       
-        return view('posts.index', compact('posts', 'categories'));
+        // $categories = Category::with('posts')->get(); // カテゴリーとその投稿を取得
+        return view('posts.index')->with(['posts' => $posts]);
     }
     
      public function show(Post $post)
@@ -31,6 +31,7 @@ class PostController extends Controller
      public function store(PostRequest $request, Post $post)
      {   
          $input = $request['post'];
+         $input['user_id']=Auth::id();
          $post->fill($input)->save();
          return redirect('/posts/' . $post->id);
      }
@@ -41,8 +42,9 @@ class PostController extends Controller
      
      public function update(PostRequest $request, Post $post)
      {
-         $input_post = $request['post'];
-         $post->fill($input_post)->save();
+         $input = $request['post'];
+         $input['user_id']=Auth::id();
+         $post->fill($input)->save();
          return redirect('/posts/' . $post->id);
      }
      
@@ -60,5 +62,6 @@ class PostController extends Controller
 
         return view('posts.index', compact('posts'));
     }
-
+    
+   
 }

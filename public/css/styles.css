@@ -126,7 +126,7 @@ body {
     font-size: 16px;
     border-radius: 18px;
     border: 1px solid #ccc;
-    text-align: le; /* 入力テキストを中央に配置 */
+    text-align: left; /* 入力テキストを中央に配置 */
     margin-right: 10px; /* ボタンとの間にスペースを追加 */
     margin-top: 15px;
 }
@@ -140,20 +140,14 @@ body {
     margin-top: 19px; /* 上にマージンを追加 */
 }
 
+.edit-link {
+    text-decoration: none;
+    color: #007bff; /* 任意の色 */
+    position: absolute; /* 絶対配置にする */
+    bottom: 15px; /* 下から10ピクセルの位置 */
+    right: 60px; /* 右から10ピクセルの位置 */
+}
 
-/*JavaScript*/
-/*最後に、JavaScriptでタブをクリックしたときに対応するコンテンツを表示する機能を追加します。*/
-
-/*javascript*/
-/*コードをコピーする*/
-/*// script.js*/
-/*function showContent(tabId) {*/
-/*    // すべてのコンテンツを非表示にする*/
-/*    var contents = document.getElementsByClassName('content-item');*/
-/*    for (var i = 0; i < contents.length; i++) {*/
-/*        contents[i].classList.remove('active');*/
-/*    }*/
-    
-/*    // クリックされたタブのコンテンツを表示する*/
-/*    document.getElementById(tabId).classList.add('active');*/
-/*}*/
+.edit-link:hover {
+    text-decoration: underline;
+}

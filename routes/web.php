@@ -4,8 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
-
-
+use App\Http\Controllers\ChatController;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -30,5 +29,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/search', [PostController::class, 'search'])->name('posts.search');
+
+Route::get('/chat/{user}', [ChatController::class, 'openChat']);
+Route::post('/chat', [ChatController::class, 'sendMessage']);
 
 require __DIR__.'/auth.php';
