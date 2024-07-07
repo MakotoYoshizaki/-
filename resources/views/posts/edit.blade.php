@@ -29,7 +29,7 @@
             </div>
             <input type="submit" value="アプデ！">
         </form>
-            <a href="/posts/{{ $post->id }}">戻る</a>
+            <a href="/">戻る</a>
         </div>
     </body>
 </html>
