@@ -54,7 +54,7 @@
             };
             console.log(params);        // ok
             {{-- POSTリクエスト送信処理とレスポンス取得処理 --}}
-            // status: 500になってしまう
+            
             axios.post( '/chat', params )
                 .then( response => {
                     console.log(response);

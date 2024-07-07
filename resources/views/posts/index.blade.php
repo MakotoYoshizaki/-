@@ -65,7 +65,7 @@
                             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h2>
                         <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                        <p class='body'>{{ $post->body }}</p>
+                        <p class='body'>{!! \App\Http\Controllers\PostController::convertUrlsToLinks($post->body) !!}</p>
                         <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                             @csrf
                             @method('DELETE')
@@ -73,7 +73,7 @@
                         </form>
                          <a href="/posts/{{ $post->id }}/edit" class="edit-link">&#x1F58A;</a>
                         @if($post->user != Auth::user())
-                            <a href="/chat/1">{{ $post->user->name }}とチャットする</a>  <!-- リンク直す -->
+                            <a href="/chat/{{ $post->user->id }}">{{ $post->user->name }}とチャットする</a>  <!-- リンク直す -->
                         @endif
                     </div>
                     @endforeach
