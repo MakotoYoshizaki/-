@@ -65,13 +65,14 @@
                             <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                         </h2>
                         <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                        <p class='body'>{{ $post->body }}</p>
+                        <p class='body'>{!! \App\Http\Controllers\PostController::convertUrlsToLinks($post->body) !!}</p>
                         <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="button" class="submit-button" onclick="deletePost({{ $post->id }})"> &#x1F5D1; </button>
                         </form>
                          <a href="/posts/{{ $post->id }}/edit" class="edit-link">&#x1F58A;</a>
+
                             <a href="/chat/{{ $post->id }}">コメントする</a>  <!-- リンク直す -->
                     </div>
                     @endforeach

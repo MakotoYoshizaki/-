@@ -63,5 +63,12 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
     
-   
+    public static function convertUrlsToLinks($content)
+    {
+        $urlPattern = '/(https?:\/\/[^\s]+)/';
+        $replacePattern = '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>';
+
+        return preg_replace($urlPattern, $replacePattern, e($content));
+    }
+    
 }
