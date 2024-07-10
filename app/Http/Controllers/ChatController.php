@@ -7,15 +7,16 @@ use App\Library\Chat;
 use App\Models\Room;
 use App\Models\Message;
 use App\Models\User;
+use App\Models\Post;
 use App\Events\MessageSent;
 use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller {
-    public function openChat(User $user)
+    public function openChat(Post $post)
     {
         // 自分と相手のIDを取得
         $myUserId = auth()->user()->id;
-        $otherUserId = $user->id; // ここで相手のユーザーIDを指定
+        $otherUserId = $post->id; // ここで相手のユーザーIDを指定
 
         // データベース内でチャットが存在するかを確認
         $chat = Room::where(function($query) use ($myUserId, $otherUserId) {
@@ -29,13 +30,18 @@ class ChatController extends Controller {
         // チャットが存在しない場合、新しいチャットを作成
         if (!$chat) {
             $chat = new Room();
-            $chat->owner_id = $myUserId;
-            $chat->guest_id = $otherUserId;
+            $chat->owner_id = $otherUserId;
+            $chat->guest_id = $myUserId; 
             $chat->save();
         }
 
-        $messages = Message::where('chat_id', $chat->id)->orderBy('updated_at', 'DESC')->get();
-
+        $chats = Room::where('owner_id',$otherUserId)->get();
+        $chats_id = array();
+        foreach($chats as $val){
+            array_push($chats_id, $val->id);
+        }
+        // $messages = Message::where('chat_id', $chat->id)->orderBy('updated_at', 'DESC')->get();
+        $messages = Message::whereIn('chat_id', $chats_id)->orderBy('updated_at', 'DESC')->get();
 
         return view('chats.chat')->with(['chat' => $chat, 'messages' => $messages]);
         
