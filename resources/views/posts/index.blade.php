@@ -72,9 +72,8 @@
                             <button type="button" class="submit-button" onclick="deletePost({{ $post->id }})"> &#x1F5D1; </button>
                         </form>
                          <a href="/posts/{{ $post->id }}/edit" class="edit-link">&#x1F58A;</a>
-                        @if($post->user != Auth::user())
-                            <a href="/chat/{{ $post->user->id }}">{{ $post->user->name }}とチャットする</a>  <!-- リンク直す -->
-                        @endif
+
+                            <a href="/chat/{{ $post->id }}">コメントする</a>  <!-- リンク直す -->
                     </div>
                     @endforeach
                 </div>

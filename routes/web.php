@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/search', [PostController::class, 'search'])->name('posts.search');
 
-Route::get('/chat/{user}', [ChatController::class, 'openChat']);
+Route::get('/chat/{post}', [ChatController::class, 'openChat']);
 Route::post('/chat', [ChatController::class, 'sendMessage']);
 
 require __DIR__.'/auth.php';
