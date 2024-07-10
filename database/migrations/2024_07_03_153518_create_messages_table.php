@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreignId('chat_id')->nullable()->references('id')->on('chats')->onDelete('cascade');
+            $table->unique(['user_id', 'chat_id'],    // []内にunique制約を付けたいカラム名を並べる
+                       'unique_user_id_chat_id');
             $table->string('body');
             $table->timestamps();
         });
