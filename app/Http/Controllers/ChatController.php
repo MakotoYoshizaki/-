@@ -16,8 +16,8 @@ class ChatController extends Controller {
     {
         // 自分と相手のIDを取得
         $myUserId = auth()->user()->id;
-        $otherUserId = $post->id; // ここで相手のユーザーIDを指定
-
+        $otherUserId = $post->user_id;// ここで相手のユーザーIDを指定
+        $postId = $post->id;
         // データベース内でチャットが存在するかを確認
         $chat = Room::where(function($query) use ($myUserId, $otherUserId) {
             $query->where('owner_id', $myUserId)
@@ -41,14 +41,15 @@ class ChatController extends Controller {
             array_push($chats_id, $val->id);
         }
         // $messages = Message::where('chat_id', $chat->id)->orderBy('updated_at', 'DESC')->get();
-        $messages = Message::whereIn('chat_id', $chats_id)->orderBy('updated_at', 'DESC')->get();
+        // $messages = Message::whereIn('chat_id', $chats_id)->orderBy('updated_at', 'DESC')->get();
+        $messages = Message::where('posts_id', $postId)->get();
 
-        return view('chats.chat')->with(['chat' => $chat, 'messages' => $messages]);
+        return view('chats.chat')->with(['chat' => $chat, 'messages' => $messages, 'post' => $post]);
         
         // return view('chats.test');
     }
     
-    public function sendMessage(Message $message, Request $request,)
+    public function sendMessage(Message $message, Request $request, Post $post)
     {
         // auth()->user() : 現在認証しているユーザーを取得
         $user = Auth::user();
@@ -57,12 +58,12 @@ class ChatController extends Controller {
 
         // リクエストからデータの取り出し
         $strMessage = $request->input('message');
-
+        $postId = $request->input('post_id');
+        
         // メッセージオブジェクトの作成
         $chat = new Chat;
         $chat->body = $strMessage;
         $chat->chat_id = $request->input('chat_id');
-
         $chat->userName = $strUsername;
         MessageSent::dispatch($chat);    
 
@@ -70,8 +71,8 @@ class ChatController extends Controller {
         $message->user_id = $strUserId;
         $message->body = $strMessage;
         $message->chat_id = $request->input('chat_id');
+        $message->posts_id = $postId;
         $message->save();
-
         return response()->json(['message' => 'Message sent successfully']);
     }
 }

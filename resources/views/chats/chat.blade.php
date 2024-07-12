@@ -18,6 +18,7 @@
                     <form method="post" onsubmit="onsubmit_Form(); return false;">
                         メッセージ : <input type="text" id="input_message" autocomplete="off" />
                         <input type="hidden" id="chat_id" name="chat_id" value="{{ $chat->id }}"> 
+                        <input type="hidden" id="post_id" name="post_id" value="{{ $post->id }}"> 
                         <button type="submit" class="text-white bg-blue-700 px-5 py-2">送信</button>
                     </form>
                     
@@ -37,6 +38,7 @@
     <script>
         const elementInputMessage = document.getElementById( "input_message" );
         const chatId = document.getElementById("chat_id").value;
+        const postId = document.getElementById("post_id").value;
         
         {{-- formのsubmit処理 --}}
         function onsubmit_Form()
@@ -50,7 +52,8 @@
             }
             params = { 
                 'message': strMessage,
-                'chat_id': chatId
+                'chat_id': chatId,
+                'post_id': postId
             };
             console.log(params);        // ok
             {{-- POSTリクエスト送信処理とレスポンス取得処理 --}}
@@ -59,9 +62,12 @@
                 .then( response => {
                     console.log(response);
                     console.log(chatId);
+                    console.log(postId);
+                    console.log("成功");
                 } )
                 .catch(error => {
                     console.log(error.response);
+                    console.log("失敗");
                 } );
             {{-- テキストHTML要素の中身のクリア --}}
             elementInputMessage.value = "";

@@ -52,3 +52,11 @@
         }
     </script>
 </x-app-layout>
+
+
+
+
+$postId = $post->id;
+        dd($postId);
+        
+         $message->post_id = $postId; 

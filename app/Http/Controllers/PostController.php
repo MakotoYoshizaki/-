@@ -33,7 +33,7 @@ class PostController extends Controller
          $input = $request['post'];
          $input['user_id']=Auth::id();
          $post->fill($input)->save();
-         return redirect('/posts/' . $post->id);
+         return redirect('/');
      }
      public function edit(Post $post)
      {
@@ -45,7 +45,7 @@ class PostController extends Controller
          $input = $request['post'];
          $input['user_id']=Auth::id();
          $post->fill($input)->save();
-         return redirect('/posts/' . $post->id);
+         return redirect('/');
      }
      
      public function delete(Post $post)
